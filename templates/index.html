@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3D2Y BLOG</title>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header__left">
+      <img src="../images/logo.png" alt="Logo 3D2Y" class="header__logo">
+      <span class="header__title">3D2Y BLOG</span>
+    </div>
+    <div class="header__right">
+      <button id="btnModoNoche">Modo oscuro</button>
+      <input type="text" class="header__search" placeholder="Buscar...">
+      <button class="header__button" id="btn_Buscar">🔍</button>
+      <a href="login.html" class="header__link">Logearse</a>
+      <a href="register.html" class="header__link">Registrarse</a>
+      <button class="header__button">Ayuda</button>
+      <button class="header__button">⚙️</button>
+    </div>
+  </header>
+
+  <!-- BANNER -->
+  <div class="banner">
+    ¡Feliz Primaton!
+  </div>
+
+  <!-- CONTENEDOR PRINCIPAL -->
+  <div class="container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <button class="sidebar__menu-button">☰ Menú</button>
+      <nav class="sidebar__nav">
+        <a href="#" class="sidebar__link">🏠 Inicio</a>
+        <a href="#" class="sidebar__link">❤️ Favoritos</a>
+
+        <div class="sidebar__dropdown">
+          <div class="sidebar__dropdown-title">📑 Categorías ▼</div>
+          <div class="sidebar__dropdown-content">
+            <a href="#" class="sidebar__link">Tutoriales</a>
+            <a href="#" class="sidebar__link">Reseñas</a>
+            <a href="#" class="sidebar__link">Proyectos</a>
+          </div>
+        </div>
+
+        <div class="sidebar__dropdown">
+          <div class="sidebar__dropdown-title">👤 Autores ▼</div>
+          <div class="sidebar__dropdown-content">
+            <a href="#" class="sidebar__link">Mario</a>
+            <a href="#" class="sidebar__link">Ana</a>
+            <a href="#" class="sidebar__link">Carlos</a>
+          </div>
+        </div>
+
+      </nav>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+      <!-- CARRUSEL -->
+      <section class="carousel">
+  <!-- Botones de navegación (avanzar y retroceder) -->
+  <input type="radio" name="carousel" id="carousel-1" checked>
+  <input type="radio" name="carousel" id="carousel-2">
+
+  <div class="carousel__track">
+    <!-- Imágenes -->
+    <div class="carousel__item">
+      <img src="../images/promo1.jpg" alt="Imagen 1" class="carousel__image">
+    </div>
+    <div class="carousel__item">
+      <img src="../images/promo2.jpg" alt="Imagen 2" class="carousel__image">
+    </div>
+  </div>
+
+  <!-- Botones de navegación -->
+  <label for="carousel-1" class="carousel__prev"></label>
+  <label for="carousel-2" class="carousel__next"></label>
+</section>
+
+
+
+
+
+
+      <!-- NOVEDADES -->
+      <section class="featured" id="novedades">
+  <h2 class="featured__title">Novedades</h2>
+  <div class="featured__grid">
+    <a href="post1.html" class="post">
+  <img src="../images/filamento-petg-175mm-nova.jpg" alt="Post 1" class="post__image">
+      <div class="post__content">
+        <h3 class="post__title">Nuevo filamento PETG</h3>
+        <p class="post__author">Por Mario</p>
+      </div>
+    </a>
+
+    <div class="post">
+      <img src="../images/PLA_guia.png" alt="Post 2" class="post__image">
+      <div class="post__content">
+        <h3 class="post__title">Consejos para PLA</h3>
+        <p class="post__author">Por Ana</p>
+      </div>
+    </div>
+    <div class="post">
+      <img src="../images/ABS_Guia.jpg" alt="Post 3" class="post__image">
+      <div class="post__content">
+        <h3 class="post__title">Guía de ABS</h3>
+        <p class="post__author">Por Carlos</p>
+      </div>
+    </div>
+    <div class="post">
+      <img src="../images/postprocesado.jpg" alt="Post 4" class="post__image">
+      <div class="post__content">
+        <h3 class="post__title">Postprocesado fácil</h3>
+        <p class="post__author">Por Mario</p>
+      </div>
+    </div>
+    <div class="post">
+      <img src="../images/benchy.jpg" alt="Post 5" class="post__image">
+      <div class="post__content">
+        <h3 class="post__title">3D Benchy Challenge</h3>
+        <p class="post__author">Por Ana</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+      <!-- RECIENTES -->
+      <section class="featured" id="recientes">
+  <h2 class="featured__title">Recientes</h2>
+  <div class="featured__grid">
+    <div class="post">
+      <img src="../images/warping.jpg" alt="Post 6" class="post__image">
+      <div class="post__content">
+        <h3 class="post__title">Cómo evitar warping</h3>
+        <p class="post__author">Por Carlos</p>
+      </div>
+    </div>
+    <div class="post">
+      <img src="../images/stl.jpg" alt="Post 7" class="post__image">
+      <div class="post__content">
+        <h3 class="post__title">Creación de modelos STL</h3>
+        <p class="post__author">Por Ana</p>
+      </div>
+    </div>
+    <div class="post">
+      <img src="../images/petg-vs-pla.jpg" alt="Post 8" class="post__image">
+      <div class="post__content">
+        <h3 class="post__title">PETG vs PLA</h3>
+        <p class="post__author">Por Mario</p>
+      </div>
+    </div>
+    <div class="post">
+      <img src="../images/calibrar.jpg" alt="Post 9" class="post__image">
+      <div class="post__content">
+        <h3 class="post__title">Calibración de cama</h3>
+        <p class="post__author">Por Carlos</p>
+      </div>
+    </div>
+    <div class="post">
+      <img src="../images/Filamento-Flexible.png" alt="Post 10" class="post__image">
+      <div class="post__content">
+        <h3 class="post__title">Filamento flexible</h3>
+        <p class="post__author">Por Ana</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    &copy; 3D2Y BLOG — Todos los derechos reservados <span id="year"></span>
+  </footer>
+
+  <!-- Script Javascript-->
+  <script src="../script.js"></script>
+</body>
+</html>
