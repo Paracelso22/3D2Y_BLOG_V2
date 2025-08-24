@@ -1,0 +1,268 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Crear Post - 3D2Y Blog{% endblock %}
+
+{% block content %}
+<div class="create-post-container">
+    <div class="create-header">
+        <h1>✏️ Crear Nuevo Post</h1>
+        <p>Crea un nuevo post para tu blog de forma rápida y sencilla.</p>
+    </div>
+
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+        <div class="message {% if message.tags %}{{ message.tags }}{% endif %}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="create-form-container">
+        <form method="post" class="create-form">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="titulo">Título del Post *</label>
+                <input type="text" id="titulo" name="titulo" required 
+                       placeholder="Escribe un título atractivo para tu post"
+                       class="form-input">
+            </div>
+
+            <div class="form-group">
+                <label for="categoria">Categoría</label>
+                <select id="categoria" name="categoria" class="form-select">
+                    <option value="">Selecciona una categoría (opcional)</option>
+                    {% for categoria in categorias %}
+                    <option value="{{ categoria.id }}">{{ categoria.nombre }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="contenido">Contenido del Post *</label>
+                <textarea id="contenido" name="contenido" required 
+                          placeholder="Escribe el contenido de tu post aquí..."
+                          rows="12" class="form-textarea"></textarea>
+                <div class="char-counter">
+                    <span id="char-count">0</span> caracteres
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-primary">📤 Publicar Post</button>
+                <a href="{% url 'blog_posts:admin_dashboard' %}" class="btn-secondary">❌ Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+.create-post-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.create-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 30px;
+    background: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+}
+
+.create-header h1 {
+    color: var(--text-primary);
+    margin-bottom: 10px;
+    font-size: 2.5rem;
+}
+
+.create-header p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.create-form-container {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+}
+
+.create-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+}
+
+.form-input, .form-select, .form-textarea {
+    padding: 12px 16px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    background: var(--bg-color);
+    color: var(--text-primary);
+    transition: border-color 0.3s ease;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 200px;
+    font-family: inherit;
+}
+
+.char-counter {
+    text-align: right;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-top: 5px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent-color), #ff8c42);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+}
+
+.btn-secondary {
+    background: var(--border-color);
+    color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+    background: var(--text-secondary);
+    color: white;
+}
+
+.messages {
+    margin-bottom: 20px;
+}
+
+.message {
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.message.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.message.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+@media (max-width: 768px) {
+    .create-post-container {
+        padding: 10px;
+    }
+    
+    .create-header {
+        padding: 20px;
+    }
+    
+    .create-header h1 {
+        font-size: 2rem;
+    }
+    
+    .create-form-container {
+        padding: 20px;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+}
+</style>
+
+<script>
+// Contador de caracteres para el textarea
+document.addEventListener('DOMContentLoaded', function() {
+    const textarea = document.getElementById('contenido');
+    const charCount = document.getElementById('char-count');
+    
+    textarea.addEventListener('input', function() {
+        charCount.textContent = this.value.length;
+    });
+    
+    // Validación del formulario
+    const form = document.querySelector('.create-form');
+    form.addEventListener('submit', function(e) {
+        const titulo = document.getElementById('titulo').value.trim();
+        const contenido = document.getElementById('contenido').value.trim();
+        
+        if (!titulo) {
+            e.preventDefault();
+            alert('Por favor, ingresa un título para el post.');
+            return;
+        }
+        
+        if (!contenido) {
+            e.preventDefault();
+            alert('Por favor, ingresa contenido para el post.');
+            return;
+        }
+        
+        if (contenido.length < 50) {
+            e.preventDefault();
+            alert('El contenido debe tener al menos 50 caracteres.');
+            return;
+        }
+    });
+});
+</script>
+{% endblock %}

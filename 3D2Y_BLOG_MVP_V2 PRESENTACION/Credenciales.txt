@@ -1,0 +1,76 @@
+🔑 CREDENCIALES DE ACCESO - 3D2Y BLOG MVP
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📱 URL PRINCIPAL DEL PROYECTO:
+http://127.0.0.1:8000/
+
+═══════════════════════════════════════════════════════════════════════════════
+
+👤 USUARIO ADMINISTRADOR:
+Usuario: admin
+Contraseña: admin123
+Email: admin@3d2yblog.com
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🔗 ENLACES IMPORTANTES:
+
+🏠 Página Principal: http://127.0.0.1:8000/
+📊 Dashboard Admin: http://127.0.0.1:8000/admin-dashboard/
+✏️ Crear Posts: http://127.0.0.1:8000/quick-create/
+📝 Gestionar Posts: http://127.0.0.1:8000/manage-posts/
+⚙️ Panel Django Admin: http://127.0.0.1:8000/admin/
+📝 Lista de Blog: http://127.0.0.1:8000/blog/
+🔐 Login: http://127.0.0.1:8000/accounts/login/
+ℹ️ Acerca de: http://127.0.0.1:8000/about/
+📧 Contacto: http://127.0.0.1:8000/contact/
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🚀 COMANDOS PARA INICIAR EL PROYECTO:
+
+1. Instalar dependencias:
+   pip install -r requirements.txt
+
+2. Aplicar migraciones:
+   python manage.py migrate
+
+3. Ejecutar servidor:
+   python manage.py runserver
+
+4. Abrir navegador en: http://127.0.0.1:8000/
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📋 FUNCIONALIDADES DEMOSTRABLES:
+
+✅ CRUD Completo de Posts
+✅ Sistema de Autenticación
+✅ Dashboard Administrativo
+✅ Gestión de Estados (Publicado/Borrador)
+✅ Sistema de Categorías
+✅ Diseño Responsive
+✅ Modo Oscuro/Claro
+✅ Navegación Intuitiva
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🎯 PARA LA PRESENTACIÓN:
+
+1. Iniciar el servidor
+2. Hacer login como admin
+3. Mostrar el dashboard
+4. Crear un post de prueba
+5. Gestionar posts existentes
+6. Mostrar la vista pública
+7. Demostrar funcionalidades CRUD
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📞 INFORMACIÓN DE CONTACTO:
+Desarrollador: Paracelso22
+Email: akashaska22@gmail.com
+Proyecto: 3D2Y Blog MVP
+
+═══════════════════════════════════════════════════════════════════════════════

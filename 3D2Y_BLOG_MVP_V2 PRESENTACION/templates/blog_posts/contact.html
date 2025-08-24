@@ -1,0 +1,308 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contacto - 3D2Y Blog{% endblock %}
+
+{% block content %}
+<div class="contact-container">
+    <div class="contact-header">
+        <h1>📧 Contacto</h1>
+        <p>¿Tienes preguntas o sugerencias? ¡Nos encantaría escucharte!</p>
+    </div>
+
+    <div class="contact-content">
+        <div class="contact-info-section">
+            <h2>📞 Información de Contacto</h2>
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <div class="method-icon">📧</div>
+                    <div class="method-details">
+                        <h3>Email</h3>
+                        <p>admin@3d2yblog.com</p>
+                        <span>Respuesta en 24 horas</span>
+                    </div>
+                </div>
+                <div class="contact-method">
+                    <div class="method-icon">🌐</div>
+                    <div class="method-details">
+                        <h3>Website</h3>
+                        <p>3d2yblog.com</p>
+                        <span>Contenido actualizado</span>
+                    </div>
+                </div>
+                <div class="contact-method">
+                    <div class="method-icon">📱</div>
+                    <div class="method-details">
+                        <h3>Redes Sociales</h3>
+                        <p>@3d2yblog</p>
+                        <span>Síguenos para novedades</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-form-section">
+            <h2>✉️ Envíanos un Mensaje</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">👤 Nombre</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">📧 Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">📝 Asunto</label>
+                    <select id="subject" name="subject" required>
+                        <option value="">Selecciona un tema</option>
+                        <option value="general">Consulta General</option>
+                        <option value="suggestion">Sugerencia</option>
+                        <option value="collaboration">Colaboración</option>
+                        <option value="technical">Soporte Técnico</option>
+                        <option value="other">Otro</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">💬 Mensaje</label>
+                    <textarea id="message" name="message" rows="6" required placeholder="Escribe tu mensaje aquí..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">🚀 Enviar Mensaje</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <h2>❓ Preguntas Frecuentes</h2>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <h3>¿Cómo puedo colaborar con el blog?</h3>
+                <p>Puedes enviarnos tus ideas, artículos o sugerencias a través del formulario de contacto. Estamos siempre abiertos a nuevas colaboraciones.</p>
+            </div>
+            <div class="faq-item">
+                <h3>¿Con qué frecuencia publican contenido?</h3>
+                <p>Publicamos contenido nuevo semanalmente, con artículos técnicos, tutoriales y reviews de productos.</p>
+            </div>
+            <div class="faq-item">
+                <h3>¿Puedo solicitar un tema específico?</h3>
+                <p>¡Por supuesto! Nos encanta recibir sugerencias de temas. Envíanos tu propuesta y la consideraremos para futuras publicaciones.</p>
+            </div>
+            <div class="faq-item">
+                <h3>¿Ofrecen servicios de consultoría?</h3>
+                <p>Actualmente nos enfocamos en el contenido del blog, pero estamos abiertos a proyectos especiales. Contáctanos para más detalles.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.contact-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 30px;
+    background: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+}
+
+.contact-header h1 {
+    color: var(--text-primary);
+    margin-bottom: 10px;
+    font-size: 2.5rem;
+}
+
+.contact-header p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.contact-info-section, .contact-form-section {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+}
+
+.contact-info-section h2, .contact-form-section h2 {
+    color: var(--text-primary);
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+}
+
+.contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-method {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: var(--method-bg);
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+}
+
+.method-icon {
+    font-size: 2rem;
+    color: var(--accent-color);
+}
+
+.method-details h3 {
+    color: var(--text-primary);
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+.method-details p {
+    color: var(--text-primary);
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.method-details span {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.form-group input, .form-group select, .form-group textarea {
+    padding: 12px 15px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--input-bg);
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+.submit-btn {
+    background: linear-gradient(135deg, var(--accent-color), #ff8c42);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+}
+
+.faq-section {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+}
+
+.faq-section h2 {
+    color: var(--text-primary);
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.faq-item {
+    padding: 20px;
+    background: var(--faq-bg);
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+}
+
+.faq-item h3 {
+    color: var(--text-primary);
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.faq-item p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Variables CSS para modo oscuro */
+:root {
+    --card-bg: #ffffff;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --border-color: #e0e0e0;
+    --accent-color: #FF6B35;
+    --method-bg: #f8f9fa;
+    --input-bg: #f8f9fa;
+    --faq-bg: #f8f9fa;
+}
+
+[data-theme="dark"] {
+    --card-bg: #2d2d2d;
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --border-color: #444444;
+    --method-bg: #3a3a3a;
+    --input-bg: #3a3a3a;
+    --faq-bg: #3a3a3a;
+}
+
+@media (max-width: 768px) {
+    .contact-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .faq-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+{% endblock %}

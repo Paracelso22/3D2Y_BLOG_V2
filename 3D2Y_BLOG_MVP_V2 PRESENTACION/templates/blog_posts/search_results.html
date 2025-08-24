@@ -1,0 +1,346 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="search-container">
+    <div class="search-header">
+        <h1>🔍 Resultados de Búsqueda</h1>
+        {% if query %}
+            <p>Buscando: "<strong>{{ query }}</strong>"</p>
+            <p class="results-count">{{ total_results }} resultado{{ total_results|pluralize }} encontrado{{ total_results|pluralize }}</p>
+        {% else %}
+            <p>Ingresa un término para buscar en el blog</p>
+        {% endif %}
+    </div>
+
+    <!-- Formulario de búsqueda -->
+    <div class="search-form-container">
+        <form method="get" action="{% url 'blog_posts:search_posts' %}" class="search-form">
+            <div class="search-input-group">
+                <input type="text" name="q" value="{{ query }}" 
+                       placeholder="Buscar posts..." 
+                       class="search-input" required>
+                <button type="submit" class="search-button">🔍 Buscar</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Resultados -->
+    {% if query %}
+        {% if posts %}
+            <div class="search-results">
+                {% for post in posts %}
+                <div class="result-item">
+                    <div class="result-content">
+                        <h3 class="result-title">
+                            <a href="{% url 'blog_posts:blog_detail' post.slug %}">{{ post.titulo }}</a>
+                        </h3>
+                        <p class="result-excerpt">
+                            {{ post.contenido|truncatewords:30 }}
+                        </p>
+                        <div class="result-meta">
+                            <span class="result-date">📅 {{ post.fecha_publicacion|date:"d/m/Y" }}</span>
+                            {% if post.categoria %}
+                            <span class="result-category">📂 {{ post.categoria.nombre }}</span>
+                            {% endif %}
+                            <span class="result-views">👁️ {{ post.vistas }} vistas</span>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="no-results">
+                <div class="no-results-icon">🔍</div>
+                <h3>No se encontraron resultados</h3>
+                <p>No hay posts que coincidan con "<strong>{{ query }}</strong>"</p>
+                <div class="no-results-suggestions">
+                    <h4>Sugerencias:</h4>
+                    <ul>
+                        <li>Verifica que las palabras estén escritas correctamente</li>
+                        <li>Prueba con términos más generales</li>
+                        <li>Usa menos palabras clave</li>
+                        <li>Revisa nuestros posts más populares</li>
+                    </ul>
+                </div>
+                <a href="{% url 'blog_posts:blog_list' %}" class="btn-primary">📝 Ver Todos los Posts</a>
+            </div>
+        {% endif %}
+    {% else %}
+        <div class="search-placeholder">
+            <div class="placeholder-icon">🔍</div>
+            <h3>¿Qué te gustaría buscar?</h3>
+            <p>Encuentra posts sobre impresión 3D, tecnología, tutoriales y más</p>
+            <div class="popular-searches">
+                <h4>Búsquedas populares:</h4>
+                <div class="search-tags">
+                    <a href="{% url 'blog_posts:search_posts' %}?q=impresión+3d" class="search-tag">Impresión 3D</a>
+                    <a href="{% url 'blog_posts:search_posts' %}?q=tutorial" class="search-tag">Tutorial</a>
+                    <a href="{% url 'blog_posts:search_posts' %}?q=tecnología" class="search-tag">Tecnología</a>
+                    <a href="{% url 'blog_posts:search_posts' %}?q=modelado" class="search-tag">Modelado</a>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+<style>
+.search-container {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.search-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 30px;
+    background: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+}
+
+.search-header h1 {
+    color: var(--text-primary);
+    margin-bottom: 10px;
+    font-size: 2.5rem;
+}
+
+.search-header p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin: 5px 0;
+}
+
+.results-count {
+    font-weight: 600;
+    color: var(--accent-color) !important;
+}
+
+.search-form-container {
+    margin-bottom: 30px;
+}
+
+.search-form {
+    display: flex;
+    justify-content: center;
+}
+
+.search-input-group {
+    display: flex;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+.search-input {
+    flex: 1;
+    padding: 15px 20px;
+    border: none;
+    font-size: 1.1rem;
+    background: var(--bg-color);
+    color: var(--text-primary);
+}
+
+.search-input:focus {
+    outline: none;
+}
+
+.search-button {
+    padding: 15px 25px;
+    border: none;
+    background: linear-gradient(135deg, var(--accent-color), #ff8c42);
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.search-button:hover {
+    background: linear-gradient(135deg, #ff8c42, var(--accent-color));
+}
+
+.search-results {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.result-item {
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease;
+}
+
+.result-item:hover {
+    transform: translateY(-2px);
+}
+
+.result-title a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.result-title a:hover {
+    color: var(--accent-color);
+}
+
+.result-excerpt {
+    color: var(--text-secondary);
+    margin: 15px 0;
+    line-height: 1.6;
+}
+
+.result-meta {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.result-meta span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.no-results, .search-placeholder {
+    text-align: center;
+    padding: 60px 20px;
+    background: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+}
+
+.no-results-icon, .placeholder-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.no-results h3, .search-placeholder h3 {
+    color: var(--text-primary);
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+}
+
+.no-results p, .search-placeholder p {
+    color: var(--text-secondary);
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+}
+
+.no-results-suggestions {
+    text-align: left;
+    max-width: 400px;
+    margin: 0 auto 30px;
+}
+
+.no-results-suggestions h4 {
+    color: var(--text-primary);
+    margin-bottom: 15px;
+}
+
+.no-results-suggestions ul {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.no-results-suggestions li {
+    margin-bottom: 8px;
+}
+
+.popular-searches {
+    margin-top: 30px;
+}
+
+.popular-searches h4 {
+    color: var(--text-primary);
+    margin-bottom: 15px;
+}
+
+.search-tags {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.search-tag {
+    padding: 8px 16px;
+    background: var(--border-color);
+    color: var(--text-primary);
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.search-tag:hover {
+    background: var(--accent-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, var(--accent-color), #ff8c42);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+}
+
+@media (max-width: 768px) {
+    .search-container {
+        padding: 10px;
+    }
+    
+    .search-header {
+        padding: 20px;
+    }
+    
+    .search-header h1 {
+        font-size: 2rem;
+    }
+    
+    .search-input-group {
+        flex-direction: column;
+        border-radius: 15px;
+    }
+    
+    .search-input, .search-button {
+        border-radius: 0;
+    }
+    
+    .result-meta {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .search-tags {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+</style>
+{% endblock %}
